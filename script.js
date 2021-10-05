@@ -4,6 +4,8 @@ const list = document.querySelector('.todos-box');
 const message = document.querySelector('.message');
 const todosCount = document.querySelector('.todos-count span');
 const completedTodos = document.querySelector('.completed-todos span');
+const deleteAll = document.querySelector('.del-all');
+const markAll = document.querySelector('.mark-all');
 
 // Adding Todos
 form.addEventListener('submit', e => {
@@ -13,8 +15,8 @@ form.addEventListener('submit', e => {
     // Creating The Elements
     let val = form.input.value;
     if (val) {
-        // Calling The Add Todos Function
-        addTodos(val, false);
+        // Check Before Calling The "addTodos()" Function
+        checkExist(val);
 
         // Hide The Message
         message.classList.add('hide');
@@ -24,6 +26,8 @@ form.addEventListener('submit', e => {
     } else {
         swal('There Is No Value')
     }
+
+    // Calling Functions
     counters();
     todosLocalStorage();
 });
@@ -38,14 +42,22 @@ function addTodos(text, completed) {
     let doneVal = completed ? 'task done' : 'task';
     task.classList = doneVal;
     delBtn.classList.add('del');
-    
 
     // Appending Children
     delBtn.append('Delete');
-    task.append(text);
-    task.appendChild(delBtn);
+    task.append(text, delBtn);
     list.appendChild(task);
 
+}
+
+// Check Existance Before Adding Todos
+function checkExist(text) {
+    if (list.innerHTML.includes(` ${text} `)) {
+        swal('Write Another Task');
+    } else {
+        // Calling The "addTodos()" Function
+        addTodos(` ${text} `, false);
+    }
 }
 
 // Deleteing The Todos
@@ -57,16 +69,18 @@ list.addEventListener('click', e => {
     if (list.childElementCount === 1) {
         message.classList.remove('hide');
     }
+    // Calling Functions
     counters();
     todosLocalStorage();
 });
 
-// Mark Task As Completed
+// Mark Todos
 list.addEventListener('click', e => {
     // Check If Element Contains "task" Class
     if (e.target.classList.contains('task')) {
         e.target.classList.toggle('done');
     }
+    // Calling Functions
     counters();
     todosLocalStorage();
 });
@@ -82,6 +96,25 @@ function counters() {
     completedTodos.textContent = completedTodosNum;
 }
 counters();
+
+// Delete All Todos
+deleteAll.addEventListener('click', () => {
+    list.querySelectorAll('.task').forEach(task => {
+        task.remove()
+    });
+    message.classList.remove('hide');
+    counters();
+    todosLocalStorage();
+});
+
+// Mark All Todos
+markAll.addEventListener('click', () => {
+    list.querySelectorAll('.task').forEach(task => {
+        task.classList.toggle('done');
+    });
+    counters();
+    todosLocalStorage();
+});
 
 // localStorage
 function todosLocalStorage() {
