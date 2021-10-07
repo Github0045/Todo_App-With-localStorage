@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
 /* Main Rules */
 * {
     -webkit-box-sizing: border-box;
@@ -9,104 +9,68 @@
     user-select: none;
 }
 body {
-    font-family: 'Roboto Mono', sans-serif;
+    background-color: #f5f5f5;
+    color: #444;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Main Styling */
-.todo-container {
-    margin: 40px auto;
-    width: 600px;
-    max-width: 95%;
-    background-color: #f6f6f6;
-    border-radius: 4px;
-    overflow: hidden;
+h1 {
+    color: rgba(179, 131, 226, .4);
+    font-size: 10rem;
+    text-align: center;
 }
-.add-todos {
-    display: flex;
-    padding: 15px;
-    background-color: #2196f3;
+form {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .1);
+    max-width: 100%;
+    width: 400px;
 }
-.add-todos input[type=text] {
+.input {
+    border: none;
+    color: #444;
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    display: block;
     width: 100%;
-    padding: 10px 15px;
-    font-size: 20px;
-    color: #fff;
-    background-color: rgb(255, 255, 255, .3);
-    border: none;
-    border-radius: 4px 0 0 4px;
 }
-.add-todos input[type=text]::placeholder {
-    color: #eee;
+.input::placeholder {
+    color: #d5d5d5;
 }
-.add-todos input[type=text]:focus::placeholder {
-    color: transparent;
+.input:focus {
+    outline-color: rgba(179, 131, 226, 1);
 }
-.add-todos input[type=submit] {
-    font-size: 38px;
-    padding: 0 15px;
+form .todos {
     background-color: #fff;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-}
-.add-todos input:focus {outline: none;}
-.todo-container .todos-box {
-    padding: 15px 15px 0 15px;
-    max-height: 240px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    max-height: 210px;
     overflow: auto;
 }
-.todo-container .todos-box::-webkit-scrollbar {
-    width: 5px;
+form .todos::-webkit-scrollbar {
+    width: 6px;
 }
-.todo-container .todos-box::-webkit-scrollbar-thumb {
-    background-color: #ddd;
-    border-radius: 2.5px;
-}
-.todo-container .todos-box > span {
-    display: block;
-    background-color: #fff;
-    padding: 10px 15px;
-}
-.todo-container .todos-box span.message {color: #777;}
-.todo-container .todos-box span.task {
-    display: flex;
-    justify-content: space-between;
-    border-left: 4px solid #f44336;
-    border-radius: 4px 0 0 4px;
-}
-.todo-container .todos-box span.task.done {
-    border-left-color: lightgreen;
-
-}
-.todo-container .todos-box span.task:not(:last-child) {
-    border-bottom: 1px solid #eee;
-}
-.todo-container .todos-box span.task .del {
-    font-size: 12px;
-    padding: 2px 8px;
-    background-color: #f44336;
-    color: #fff;
+form .todos::-webkit-scrollbar-thumb {
+    background-color: rgba(179, 131, 226, .4);
     border-radius: 3px;
+}
+form .todos li {
+    border-top: 1px solid #e5e5e5;
     cursor: pointer;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
 }
-.todo-container .todos-options {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
+form .todos li.done {
+    color: #b6b6b6;
+    text-decoration: line-through;
 }
-.todo-container .todos-options .todos-count span,
-.todo-container .todos-options .completed-todos span {
-    font-size: 14px;
-    padding: 1px 5px;
-    border-radius: 4px;
-    color: #fff;
-    background-color: #f44336;
+small {
+    color: #b5b5b5;
+    margin-top: 3rem;
+    text-align: center;
 }
-.todo-container .todos-options > span {
-    background-color: #2196f3;
-    padding: 2px 10px;
-    border-radius: 4px;
-    color: #fff;
-    cursor: pointer;
-}
-.hide {display: none !important;}

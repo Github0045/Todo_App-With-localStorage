@@ -4,28 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Sweet Alert Cdn -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-    <title>Todo App</title>
+    <meta name="description" content="Todo List With LocalStorage">
+    <title>Day 22 | Todo List</title>
     <!-- Stylesheet -->
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="todo-container">
-        <form class="add-todos">
-            <input type="text" id="input" placeholder="Add Todo..." autocomplete="off">
-            <input type="submit" value="+">
-        </form>
-        <div class="todos-box">
-            <span class="message">No Todos To Show</span>
-        </div>
-        <div class="todos-options">
-            <div class="todos-count">Todos <span>0</span></div>
-            <span class="del-all">Delete All</span>
-            <span class="mark-all">Un/Mark All</span>
-            <div class="completed-todos">Completed <span>0</span></div>
-        </div>
-    </div>
+    <h1>Todos</h1>
+    <form>
+        <input type="text" class="input" id="input" placeholder="Enter Your Todo" autocomplete="off">
+        <ul class="todos" id="todos"></ul>
+    </form>
+    <small>Left Click To Toggle Completed<br>Right Click To Delete Todo</small>
     <!-- Js Script -->
     <script src="./script.js"></script>
 </body>
